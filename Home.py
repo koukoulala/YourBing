@@ -1,28 +1,23 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Langchain Chatbot",
+    page_title="YourBing",
     page_icon='💬',
     layout='wide'
 )
 
-st.header("Chatbot Implementations with Langchain")
+st.header("YourBing - Bing Traditional Chinese Medicine Health Hub")
 st.write("""
-[![view source code ](https://img.shields.io/badge/GitHub%20Repository-gray?logo=github)](https://github.com/shashankdeshpande/langchain-chatbot)
-[![linkedin ](https://img.shields.io/badge/Shashank%20Deshpande-blue?logo=linkedin&color=gray)](https://www.linkedin.com/in/shashank-deshpande/)
-![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Flangchain-chatbot.streamlit.app&label=Visitors&labelColor=%235d5d5d&countColor=%231e7ebf&style=flat)
+Imagine an ecosystem that integrates a comprehensive knowledge graph of Traditional Chinese Medicine (TCM) into an app, leveraging state-of-the-art large language models (LLM) to provide personalized health and wellness recommendations, interactive community support, and expert consultations. 
+This isn't just an app—it’s the future of health platforms—YourBing. 
 """)
 st.write("""
-Langchain is a powerful framework designed to streamline the development of applications using Language Models (LLMs). It provides a comprehensive integration of various components, simplifying the process of assembling them to create robust applications.
+- YourBing utilizes camera capture and user interaction feedback to continuously monitor users' health conditions. 
+- By employing the traditional TCM methods of "observation, listening, questioning" YourBing refines and optimizes health advice, ensuring each user receives the most accurate and personalized TCM guidance. 
+- Users can input symptoms, health goals, or dietary preferences to receive tailored TCM advice. 
+- YourBing offers an interactive community for sharing experiences, seeking advice, and interacting with TCM experts. 
 
-Leveraging the power of Langchain, the creation of chatbots becomes effortless. Here are a few examples of chatbot implementations catering to different use cases:
+Through Retrieval-Augmented Generation (RAG) methods, YourBing ensures that every recommendation is based on the latest and most relevant information, providing reliable health guidance.
 
-- **Basic Chatbot**: Engage in interactive conversations with the LLM.
-- **Context aware chatbot**: A chatbot that remembers previous conversations and provides responses accordingly.
-- **Chatbot with Internet Access**: An internet-enabled chatbot capable of answering user queries about recent events.
-- **Chat with your documents**: Empower the chatbot with the ability to access custom documents, enabling it to provide answers to user queries based on the referenced information.
-- **Chat with SQL database**: Enable the chatbot to interact with a SQL database through simple, conversational commands.
-- **Chat with Websites**: Enable the chatbot to interact with website contents.
-
-To explore sample usage of each chatbot, please navigate to the corresponding chatbot section.
+YourBing not only serves individual users but also equips TCM clinics, health consulting firms, and educational institutions with powerful tools to enhance their service quality and efficiency. In this way, YourBing drives the digital transformation of TCM while promoting health equity on a global scale.
 """)

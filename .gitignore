@@ -1,0 +1,13 @@
+*.__pycache__
+ckpts/
+**/*.pt
+
+# Dependencies
+.psci_modules
+.spago
+bower_components
+node_modules
+
+# Generated files
+.psci
+output

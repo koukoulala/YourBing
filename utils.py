@@ -3,15 +3,20 @@ import openai
 import streamlit as st
 from datetime import datetime
 from streamlit.logger import get_logger
-from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI, AzureChatOpenAI
 from langchain_community.chat_models import ChatOllama
 from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
 
-logger = get_logger('Langchain-Chatbot')
+os.environ["AZURE_OPENAI_API_KEY"] = "50de015aec69492ea83ecbc2c5d773c1"
+os.environ["AZURE_OPENAI_ENDPOINT"] = "https://chatgptcanadaeastnew.openai.azure.com/"
+os.environ["AZURE_OPENAI_API_VERSION"] = "2024-02-01"
+os.environ["AZURE_OPENAI_CHAT_DEPLOYMENT_NAME"] = "gpt-4o-0513"
+
+logger = get_logger('YourBing')
 
 #decorator
 def enable_chat_history(func):
-    if os.environ.get("OPENAI_API_KEY"):
+    if os.environ.get("AZURE_OPENAI_API_KEY"):
 
         # to clear chat history after swtching chatbot
         current_page = func.__qualname__
@@ -27,7 +32,7 @@ def enable_chat_history(func):
 
         # to show chat history on ui
         if "messages" not in st.session_state:
-            st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+            st.session_state["messages"] = [{"role": "assistant", "content": "Do you have any health questions that you would like to consult?"}]
         for msg in st.session_state["messages"]:
             st.chat_message(msg["role"]).write(msg["content"])
 
@@ -79,17 +84,23 @@ def choose_custom_openai_key():
     return model, openai_api_key
 
 def configure_llm():
-    available_llms = ["gpt-4o-mini","llama3.1:8b","use your openai api key"]
+    available_llms = ["gpt-4o","llama3:8b"]
     llm_opt = st.sidebar.radio(
         label="LLM",
         options=available_llms,
         key="SELECTED_LLM"
         )
 
-    if llm_opt == "llama3.1:8b":
-        llm = ChatOllama(model="llama3.1", base_url=st.secrets["OLLAMA_ENDPOINT"])
-    elif llm_opt == "gpt-4o-mini":
-        llm = ChatOpenAI(model_name=llm_opt, temperature=0, streaming=True, api_key=st.secrets["OPENAI_API_KEY"])
+    if llm_opt == "llama3:8b":
+        llm = ChatOllama(model="llama3")
+    elif llm_opt == "gpt-4o":
+        #llm = ChatOpenAI(model_name=llm_opt, temperature=0, streaming=True, api_key=st.secrets["OPENAI_API_KEY"])
+        llm = AzureChatOpenAI(
+            openai_api_version=os.environ["AZURE_OPENAI_API_VERSION"],
+            azure_deployment=os.environ["AZURE_OPENAI_CHAT_DEPLOYMENT_NAME"],
+            temperature=0, 
+            streaming=True
+        )
     else:
         model, openai_api_key = choose_custom_openai_key()
         llm = ChatOpenAI(model_name=model, temperature=0, streaming=True, api_key=openai_api_key)

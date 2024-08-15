@@ -11,7 +11,7 @@ from langchain_community.utilities.sql_database import SQLDatabase
 st.set_page_config(page_title="ChatSQL", page_icon="🛢")
 st.header('Chat with SQL database')
 st.write('Enable the chatbot to interact with a SQL database through simple, conversational commands.')
-st.write('[![view source code ](https://img.shields.io/badge/view_source_code-gray?logo=github)](https://github.com/shashankdeshpande/langchain-chatbot/blob/master/pages/5_%F0%9F%9B%A2_chat_with_sql_db.py)')
+#st.write('[![view source code ](https://img.shields.io/badge/view_source_code-gray?logo=github)](https://github.com/shashankdeshpande/langchain-chatbot/blob/master/pages/5_%F0%9F%9B%A2_chat_with_sql_db.py)')
 
 class SqlChatbot:
 
